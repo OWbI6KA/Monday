@@ -1,10 +1,94 @@
-<!DOCTYPE html>
+{% load static %}
+
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <link rel="canonical" href="{% static 'css/signIn.css' %}">
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/boostrap/bootstrap.min.css' %}" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/signUp.css' %}" rel="stylesheet">
 </head>
-<body>
+<body class="text-center">
+<div class="container">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                <use href="#bootstrap"></use>
+            </svg>
+        </a>
+{#        <div class="col-md-3 text-end">#}
+{#            <a class="btn btn-outline-primary me-2" href="{% url 'home' %}">Назад</a>#}
+
+{#        </div>#}
+    </header>
+</div>
+
+<main class="form-sign`In">
+    <form>
+        <h1 class="h3 mb-3 fw-normal">Пожалуйста введите ваши данные</h1>
+
+        <div class="form-floating">
+            <input type="name" class="form-control" id="floatingName" placeholder="name">
+            <label for="floatingInput">Имя</label>
+        </div>
+        <div class="form-floating">
+            <input type="surname" class="form-control" id="floatingSurname" placeholder="surname">
+            <label for="floatingInput">Фамилия</label>
+        </div>
+        <div class="form-floating">
+            <input type="email" class="form-control" id="floatingEmail`" placeholder="email">
+            <label for="floatingPassword">Почта</label>
+        </div>
+        <div class="form-floating">
+            <input type="password1" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Введите пароль</label>
+        </div>
+        <div class="form-floating">
+            <input type="password2" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Повторно введите пароль</label>
+        </div>
+        <div class="form-floating">
+            <input type="access_code" class="form-control" id="floatingAccess_code" placeholder="access_code">
+            <label for="floatingPassword">Введите код для входа</label>
+        </div>
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Запомнить меня
+            </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Войти</button>
+
+    </form>
+</main>
+
 
 </body>
 </html>
