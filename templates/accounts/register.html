@@ -9,11 +9,11 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <link rel="canonical" href="{% static 'css/signIn.css' %}">
+    <link rel="canonical" href="{% static 'css/accounts/register.css' %}">
 
 
     <!-- Bootstrap core CSS -->
-    <link href="{% static 'css/boostrap/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap/bootstrap.css' %}" rel="stylesheet">
 
     <style>
         .bd-placeholder-img {
@@ -33,7 +33,7 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="{% static 'css/signUp.css' %}" rel="stylesheet">
+    <link href="{% static 'css/accounts/register.css' %}" rel="stylesheet">
 </head>
 <body class="text-center">
 <div class="container">
@@ -43,14 +43,14 @@
                 <use href="#bootstrap"></use>
             </svg>
         </a>
-{#        <div class="col-md-3 text-end">#}
-{#            <a class="btn btn-outline-primary me-2" href="{% url 'home' %}">Назад</a>#}
+        <div class="col-md-3 text-end">
+            <a class="btn btn-outline-primary me-2" href="{% url 'home_page:home' %}">Назад</a>
 
-{#        </div>#}
+        </div>
     </header>
 </div>
 
-<main class="form-sign`In">
+<main class="form-signin">
     <form>
         <h1 class="h3 mb-3 fw-normal">Пожалуйста введите ваши данные</h1>
 
