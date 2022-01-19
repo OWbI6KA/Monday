@@ -1,94 +1,87 @@
+{% extends 'base/base.html' %}
 {% load static %}
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
+{% block registration %}
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.88.1">
-    <link rel="canonical" href="{% static 'css/accounts/register.css' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+        <meta name="generator" content="Hugo 0.88.1">
+        <link rel="canonical" href="{% static 'css/accounts/register.css' %}">
 
 
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'css/bootstrap/bootstrap.css' %}" rel="stylesheet">
+        <!-- Bootstrap core CSS -->
+        <link href="{% static 'css/bootstrap/bootstrap.css' %}" rel="stylesheet">
 
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
+        <style>
+            .bd-placeholder-img {
+                font-size: 1.125rem;
+                text-anchor: middle;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                user-select: none;
             }
-        }
-    </style>
+
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+                }
+            }
+        </style>
 
 
-    <!-- Custom styles for this template -->
-    <link href="{% static 'css/accounts/register.css' %}" rel="stylesheet">
-</head>
-<body class="text-center">
-<div class="container">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-        <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                <use href="#bootstrap"></use>
-            </svg>
-        </a>
-        <div class="col-md-3 text-end">
-            <a class="btn btn-outline-primary me-2" href="{% url 'home_page:home' %}">Назад</a>
+        <!-- Custom styles for this template -->
+        <link href="{% static 'css/accounts/register.css' %}" rel="stylesheet">
+        <title>Регистрация</title>
+    </head>
+    <body class="text-center">
+    <main class="form-signin">
+        <form>
+            <h1 class="h3 mb-3 fw-normal">Пожалуйста введите ваши данные</h1>
 
-        </div>
-    </header>
-</div>
+            <div class="form-floating">
+                <input type="name" class="form-control" id="floatingName" placeholder="name">
+                <label for="floatingInput">Имя</label>
+            </div>
 
-<main class="form-signin">
-    <form>
-        <h1 class="h3 mb-3 fw-normal">Пожалуйста введите ваши данные</h1>
+            <div class="form-floating">
+                <input type="surname" class="form-control" id="floatingSurname" placeholder="surname">
+                <label for="floatingInput">Фамилия</label>
+            </div>
 
-        <div class="form-floating">
-            <input type="name" class="form-control" id="floatingName" placeholder="name">
-            <label for="floatingInput">Имя</label>
-        </div>
-        <div class="form-floating">
-            <input type="surname" class="form-control" id="floatingSurname" placeholder="surname">
-            <label for="floatingInput">Фамилия</label>
-        </div>
-        <div class="form-floating">
-            <input type="email" class="form-control" id="floatingEmail`" placeholder="email">
-            <label for="floatingPassword">Почта</label>
-        </div>
-        <div class="form-floating">
-            <input type="password1" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Введите пароль</label>
-        </div>
-        <div class="form-floating">
-            <input type="password2" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Повторно введите пароль</label>
-        </div>
-        <div class="form-floating">
-            <input type="access_code" class="form-control" id="floatingAccess_code" placeholder="access_code">
-            <label for="floatingPassword">Введите код для входа</label>
-        </div>
+            <div class="form-floating">
+                <input type="email" class="form-control" id="floatingEmail`" placeholder="email">
+                <label for="floatingPassword">Почта</label>
+            </div>
 
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Запомнить меня
-            </label>
-        </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Войти</button>
+            <div class="form-floating">
+                <input type="password1" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Введите пароль</label>
+            </div>
 
-    </form>
-</main>
+            <div class="form-floating">
+                <input type="password2" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Повторно введите пароль</label>
+            </div>
 
+            <div class="form-floating">
+                <input type="access_code" class="form-control" id="floatingAccess_code" placeholder="access_code">
+                <label for="floatingPassword">Введите код для входа</label>
+            </div>
 
-</body>
-</html>
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Запомнить меня
+                </label>
+            </div>
+
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Войти</button>
+        </form>
+    </main>
+    </body>
+    </html>
+{% endblock %}
