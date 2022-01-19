@@ -3,7 +3,7 @@
 
 {% block registration %}
     <!doctype html>
-    <html lang="en">
+    <html lang="ru">
     <head>
         <meta charset="utf-8">
 
@@ -36,7 +36,6 @@
 
         <!-- Custom styles for this template -->
         <link href="{% static 'css/accounts/register.css' %}" rel="stylesheet">
-        <title>Регистрация</title>
     </head>
     <body class="text-center">
     <main class="form-signin">
@@ -84,4 +83,8 @@
     </main>
     </body>
     </html>
+{% endblock %}
+
+{% block Title %}
+    Регистрация
 {% endblock %}
