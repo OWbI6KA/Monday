@@ -36,41 +36,45 @@
 
         <!-- Custom styles for this template -->
         <link href="{% static 'css/accounts/register.css' %}" rel="stylesheet">
+        <title>Регистрация</title>
     </head>
     <body class="text-center">
     <main class="form-signin">
-        <form>
+        <form method="POST" action="">
+            {% csrf_token %}
             <h1 class="h3 mb-3 fw-normal">Пожалуйста введите ваши данные</h1>
 
             <div class="form-floating">
-                <input type="name" class="form-control" id="floatingName" placeholder="name">
-                <label for="floatingInput">Имя</label>
+                <input type="name" class="form-control" id="myName" placeholder="myName" name="myName">
+                <label for="myName">Имя</label>
             </div>
 
             <div class="form-floating">
-                <input type="surname" class="form-control" id="floatingSurname" placeholder="surname">
-                <label for="floatingInput">Фамилия</label>
+                <input type="surname" class="form-control" id="mySurname" placeholder="mySurname" name="mySurname">
+                <label for="mySurname">Фамилия</label>
             </div>
 
             <div class="form-floating">
-                <input type="email" class="form-control" id="floatingEmail`" placeholder="email">
-                <label for="floatingPassword">Почта</label>
+                <input type="email" class="form-control" id="myEmail" placeholder="myEmail" name="myEmail">
+                <label for="myEmail">Почта</label>
             </div>
 
             <div class="form-floating">
-                <input type="password1" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Введите пароль</label>
+                <input type="password" class="form-control" id="password1" placeholder="password1"
+                       name="password1">
+                <label for="password1">Введите пароль</label>
             </div>
 
             <div class="form-floating">
-                <input type="password2" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Повторно введите пароль</label>
+                <input type="password" class="form-control" id="password2" placeholder="password2"
+                       name="password2">
+                <label for="password2">Повторно введите пароль</label>
             </div>
 
-            <div class="form-floating">
-                <input type="access_code" class="form-control" id="floatingAccess_code" placeholder="access_code">
-                <label for="floatingPassword">Введите код для входа</label>
-            </div>
+{#            <div class="form-floating">#}
+{#                <input type="access_code" class="form-control" id="myAccess" placeholder="myAccess">#}
+{#                <label for="myAccess">Введите код для входа</label>#}
+{#            </div>#}
 
             <div class="checkbox mb-3">
                 <label>

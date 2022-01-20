@@ -35,20 +35,22 @@
 
 
         <link href="{% static 'css/accounts/login.css' %}" rel="stylesheet">
+        <title>Вход</title>
     </head>
     <body class="text-center">
 
     <main class="form-signin">
-        <form>
+        <form method="POST" action="">
+            {% csrf_token %}
             <h1 class="h3 mb-3 fw-normal">Вход в аккаунт</h1>
 
             <div class="form-floating">
-                <input type="email" class="form-control" id="floatingPassword" placeholder="email">
-                <label for="floatingPassword">Почта</label>
+                <input type="email" class="form-control" id="username" placeholder="email" name="username">
+                <label for="username">Почта</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Введите пароль</label>
+                <input type="password" class="form-control" id="pass1" placeholder="Password" name="pass1">
+                <label for="pass1">Введите пароль</label>
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit">Войти</button>
 
