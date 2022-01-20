@@ -1,26 +1,29 @@
 {% extends 'base/base.html' %}
 
+{% load static %}
+
+
+
 {% block reg_log %}
-    <div class="container">
-        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-            <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                    <use href="#bootstrap"></use>
-                </svg>
-            </a>
-            <div class="col-md-3 text-end">
-                <a class="btn btn-outline-primary me-2" href="{% url 'accounts:login' %}">Вход</a>
-                <a class="btn btn-outline-primary me-2" href="{% url 'accounts:register' %}">Регистрация</a>
+
+    <main class="px-3">
+    <link rel="stylesheet " href="{% static 'css/base/Information_styles.css' %}">
+    <h1>Страница помощи</h1>
+        <p class="lead" >
+
+        </p>
+        <div class="grid" style="--bs-columns: 12;">
+            <div class="g-col-6">6 of 12
+            <p class="lead" >
+Вот наш справочный номер для связи в экстренных случаях: +7 777 777 77 77
+            </p>
             </div>
-        </header>
-    </div>
-{% endblock %}
-
-{% block Title %}
-    Страница помощи
-{% endblock %}
 
 
-{% block content %}
-    Страница помощи
+        </div>
+
+
+
+    <p class="lead">
+    </main>
 {% endblock %}
