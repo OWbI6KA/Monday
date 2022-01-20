@@ -8,17 +8,16 @@ from django.contrib.auth import authenticate, login
 def register(request):
     form = CreateUserForm
     if request.method == 'POST':
-        myName = request.POST['myName']
-        mySurname = request.POST['mySurname']
-        myEmail = request.POST['myEmail']
+        _name = request.POST['myName']
+        _surname = request.POST['mySurname']
+        _email = request.POST['myEmail']
         password1 = request.POST['password1']
         password2 = request.POST['password2']
-        # myAccess = request.POST['myAccess']
+        # _access = request.POST['myAccess']
 
-        myUser = User.objects.create_user(myEmail, myEmail, password1)
-        myUser.first_name = myName
-        myUser.last_name = mySurname
-
+        myUser = User.objects.create_user(_email, _email, password1)
+        myUser.first_name = _name
+        myUser.last_name = _surname
         myUser.save()
         messages.success(request, "Ваш аккаунт был успешно создан")
         return redirect('accounts:login')
@@ -27,19 +26,20 @@ def register(request):
 
 def login_view(request):
     if request.method == "POST":
-        username = request.POST['username']
-        myPassword = request.POST['pass1']
+        _user = request.POST['myEmail']
+        _password = request.POST['myPassword']
 
-        user = authenticate(username=username, password=myPassword)
+        user = authenticate(username=_user, password=_password)
 
         if user is not None:
             login(request, user)
-            fname = user.first_name
-            return render(request, 'accounts/index.html', {'fname': fname})
+            _name = user.first_name
+            return render(request, 'cabinet/index.html', {'myName': _name})
 
         else:
-            messages.error(request, 'Bad Credentials')
-            return redirect('home_page:home')
+            messages.error(request, 'Проверьте правильность введенных данных')
+            return redirect('accounts:login')
+
     return render(request, 'accounts/login.html')
 
 
