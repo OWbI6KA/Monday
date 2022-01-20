@@ -13,3 +13,9 @@ class CreateUserForm(UserCreationForm):
     mySurname = forms.Field(widget=forms.TextInput())
     myEmail = forms.Field(widget=forms.EmailInput())
     myAccess = forms.Field(widget=forms.TextInput())
+
+    # def check_password(self):
+    #     temp = self.cleaned_data
+    #     if temp['password1'] != temp['password2']:
+    #         raise forms.ValidationError('Пароли не совпадают')
+    #     return temp['password2']
