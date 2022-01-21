@@ -2,7 +2,8 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from .forms import CreateUserForm
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import auth
 
 
 def register(request):
@@ -34,7 +35,7 @@ def login_view(request):
         if user is not None:
             login(request, user)
             _name = user.first_name
-            return render(request, 'cabinet/index.html', {'myName': _name})
+            return render(request, 'cabinet/base.html', {'myName': _name})
 
         else:
             messages.error(request, 'Проверьте правильность введенных данных')
@@ -43,5 +44,6 @@ def login_view(request):
     return render(request, 'accounts/login.html')
 
 
-def logout_view(request):
-    return redirect('accounts : login')
+def logout(request):
+    auth.logout(request)
+    return redirect('home_page:home')
