@@ -1,5 +1,9 @@
 from django.shortcuts import render
 
 
-def index(request):
-    return render(request, 'cabinet/index.html')
+def general(request):
+    return render(request, 'cabinet/general.html')
+
+
+def private(request):
+    return render(request, 'cabinet/private.html')
