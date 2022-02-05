@@ -63,6 +63,6 @@ def login_view(request):
     return render(request, 'accounts/login.html')
 
 
-def logout(request):
+def logout_view(request):
     auth.logout(request)
     return redirect('home_page:home')
