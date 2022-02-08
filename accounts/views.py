@@ -25,10 +25,10 @@ def register(request):
             myUser.first_name = _name
             myUser.last_name = _surname
 
-            # функция для проверки на директора
+            # Функция для проверки на руководителя
             if len(request.POST['myAccess']) != 0:
                 _access = request.POST['myAccess']
-                if _access == '12345':  # Пароль для входа в качестве директора
+                if _access == '12345':  # Пароль для входа в качестве руководителя
                     _group = Group.objects.get(name='superUsers')
                     myUser.groups.add(_group)
 
@@ -51,7 +51,7 @@ def login_view(request):
         if user is not None:
             login(request, user)
             _name = user.first_name
-            if user in usersDirectors:
+            if user in usersDirectors:  # Проверка на руководителя
                 return render(request, 'cabinet/private.html', {'myName': _name})
             else:
                 return render(request, 'cabinet/general.html', {'myName': _name})
