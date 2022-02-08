@@ -2,7 +2,7 @@ import requests
 import json
 import sqlite3
 
-sqlite_connection = sqlite3.connect('db.db')
+sqlite_connection = sqlite3.connect('db.sqlite3')
 cursor = sqlite_connection.cursor()
 # # sqlite_create_table='''CREATE TABLE monday (
 # #                               id INTEGER PRIMARY KEY,
