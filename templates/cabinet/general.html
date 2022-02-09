@@ -1,26 +1,52 @@
-{% extends 'cabinet/base.html' %}
-
-{% block Title %}
-    Рабочий
-{% endblock %}
-
-{% block Content %}
-    <table class="table table-striped">
+{#{% extends 'cabinet/base.html' %}#}
+{#{% load static %}#}
+{##}
+{##}
+{#{% block Title %}#}
+{#    Рабочий#}
+{#{% endblock %}#}
+{##}
+{#{% block Content %}#}
+{#    <table>#}
+{#        <tr>#}
+{#            <th>Название</th>#}
+{#            <th>Подзадачи</th>#}
+{#            <th>Ответственный</th>#}
+{#            <th>Статус</th>#}
+{#            <th>Время</th>#}
+{#            <th>Ref</th>#}
+{#        </tr>#}
+{##}
+{#        {% for x in tasks %}#}
+{#            <tr>#}
+{#                <td>{{ x.name }}</td>#}
+{#                <td>{{ x.subtasks }}</td>#}
+{#                <td>{{ x.status }}</td>#}
+{#                <td>{{ x.timing }}</td>#}
+{#                <td>{{ x.ref }}</td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{##}
+{#    </table>#}
+{#{% endblock %}#}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<table>
+    {% for x in tasks %}
         <tr>
-            <th>1</th>
-            <th>2</th>
-            <th>3</th>
-            <th>4</th>
-            <th>5</th>
-            <th>6</th>
+            <td>{{ x.name }}</td>
+            <td>{{ x.subtasks }}</td>
+            <td>{{ x.contributor }}</td>
         </tr>
-    <tr>
-        <td>12345</td>
-        <td>12345</td>
-        <td>12345</td>
-        <td>12345</td>
-        <td>12345</td>
-        <td>12345</td>
-    </tr>
-    </table>
-{% endblock %}
+    {% endfor %}
+</table>
+</body>
+</html>

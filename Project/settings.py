@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'accounts',
     'base',
     'cabinet',
-    'data'
+    # 'data'
 ]
 
 MIDDLEWARE = [
