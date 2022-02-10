@@ -18,12 +18,14 @@
                 <th>Ref</th>
             </tr>
             {% for task in workTask %}
-                {{ task.name }}
-                {{ task.subtasks }}
-                {{ task.contributor }}
-                {{ task.status }}
-                {{ task.time }}
-                {{ task.ref }}
+                <tr>
+                    <td> {{ task.name }}</td>
+                    <td>{{ task.subtasks }}</td>
+                    <td>{{ task.contributor }}</td>
+                    <td>{{ task.status }}</td>
+                    <td> {{ task.time }}</td>
+                    <td>{{ task.ref }}</td>
+                </tr>
             {% endfor %}
         </table>
     {% endif %}
