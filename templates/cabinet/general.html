@@ -40,13 +40,11 @@
 </head>
 <body>
 <table>
-    {% for x in tasks %}
-        <tr>
-            <td>{{ x.name }}</td>
-            <td>{{ x.subtasks }}</td>
-            <td>{{ x.contributor }}</td>
-        </tr>
-    {% endfor %}
+    <tr>
+        {% for x in tasks %}
+            <td> {{ x.subtasks }}</td>
+        {% endfor %}
+    </tr>
 </table>
 </body>
 </html>
