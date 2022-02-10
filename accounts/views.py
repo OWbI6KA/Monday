@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User, Group, Permission
+from cabinet.models import monday_data
 
 from .forms import CreateUserForm
 from django.contrib import messages
@@ -51,10 +52,11 @@ def login_view(request):
         if user is not None:
             login(request, user)
             _name = user.first_name
+            workTask = monday_data.objects.all()
             if user in usersDirectors:  # Проверка на руководителя
-                return render(request, 'cabinet/private.html', {'myName': _name})
+                return render(request, 'cabinet/private.html', {'myName': _name, 'workTask': workTask})
             else:
-                return render(request, 'cabinet/general.html', {'myName': _name})
+                return render(request, 'cabinet/general.html', {'myName': _name, 'workTask': workTask})
 
         else:
             messages.error(request, 'Проверьте правильность введенных данных!')

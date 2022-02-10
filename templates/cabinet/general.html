@@ -1,50 +1,30 @@
-{#{% extends 'cabinet/base.html' %}#}
-{#{% load static %}#}
-{##}
-{##}
-{#{% block Title %}#}
-{#    Рабочий#}
-{#{% endblock %}#}
-{##}
-{#{% block Content %}#}
-{#    <table>#}
-{#        <tr>#}
-{#            <th>Название</th>#}
-{#            <th>Подзадачи</th>#}
-{#            <th>Ответственный</th>#}
-{#            <th>Статус</th>#}
-{#            <th>Время</th>#}
-{#            <th>Ref</th>#}
-{#        </tr>#}
-{##}
-{#        {% for x in tasks %}#}
-{#            <tr>#}
-{#                <td>{{ x.name }}</td>#}
-{#                <td>{{ x.subtasks }}</td>#}
-{#                <td>{{ x.status }}</td>#}
-{#                <td>{{ x.timing }}</td>#}
-{#                <td>{{ x.ref }}</td>#}
-{#            </tr>#}
-{#        {% endfor %}#}
-{##}
-{#    </table>#}
-{#{% endblock %}#}
-<!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<table>
-    <tr>
-        {% for x in tasks %}
-            <td> {{ x.subtasks }}</td>
-        {% endfor %}
-    </tr>
-</table>
-</body>
-</html>
+{% extends 'cabinet/base.html' %}
+{% load static %}
+
+
+{% block Title %}
+    Рабочий
+{% endblock %}
+
+{% block Content %}
+    {% if workTask.count > 0 %}
+        <table>
+            <tr>
+                <th>Название</th>
+                <th>Подзадачи</th>
+                <th>Ответственный</th>
+                <th>Статус</th>
+                <th>Время</th>
+                <th>Ref</th>
+            </tr>
+            {% for task in workTask %}
+                {{ task.name }}
+                {{ task.subtasks }}
+                {{ task.contributor }}
+                {{ task.status }}
+                {{ task.time }}
+                {{ task.ref }}
+            {% endfor %}
+        </table>
+    {% endif %}
+{% endblock %}

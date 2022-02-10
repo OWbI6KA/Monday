@@ -1,9 +1,28 @@
 {% extends 'cabinet/base.html' %}
 
 {% block Title %}
-Руководитель
+    Руководитель
 {% endblock %}
 
 {% block Content %}
-    <h1>Это личный кабинет руководителя</h1>
+    {% if workTask.count > 0 %}
+        <table>
+            <tr>
+                <th>Название</th>
+                <th>Подзадачи</th>
+                <th>Ответственный</th>
+                <th>Статус</th>
+                <th>Время</th>
+                <th>Ref</th>
+            </tr>
+            {% for task in workTask %}
+                {{ task.name }}
+                {{ task.subtasks }}
+                {{ task.contributor }}
+                {{ task.status }}
+                {{ task.time }}
+                {{ task.ref }}
+            {% endfor %}
+        </table>
+    {% endif %}
 {% endblock %}
