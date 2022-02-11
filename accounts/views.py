@@ -6,6 +6,7 @@ from .forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import auth
+from django.urls import reverse
 from acceses.script import passwords
 
 
@@ -51,12 +52,10 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            _name = user.first_name
-            workTask = monday_data.objects.all()
             if user in usersDirectors:  # Проверка на руководителя
-                return render(request, 'cabinet/private.html', {'myName': _name, 'workTask': workTask})
+                return redirect(reverse('personal_account:private'))
             else:
-                return render(request, 'cabinet/general.html', {'myName': _name, 'workTask': workTask})
+                return redirect(reverse('personal_account:general'), )
 
         else:
             messages.error(request, 'Проверьте правильность введенных данных!')

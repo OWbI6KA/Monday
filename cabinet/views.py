@@ -4,12 +4,15 @@ from .models import monday_data
 
 
 def general(request):
-    return render(request, 'cabinet/general.html')
+    _name = request.user.first_name
+    workTask = monday_data.objects.all()
+    return render(request, 'cabinet/general.html', {'myName': _name, 'workTask': workTask})
 
 
 def private(request):
-    return render(request, 'cabinet/private.html')
-
+    _name = request.user.first_name
+    workTask = monday_data.objects.all()
+    return render(request, 'cabinet/private.html', {'myName': _name, 'workTask': workTask})
 
 # class TasksView(ListView):
 #     model = monday_data
