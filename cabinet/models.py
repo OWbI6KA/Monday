@@ -129,3 +129,17 @@ class monday_data(models.Model):
     class Meta:
         managed = True
         db_table = 'monday_data'
+
+class modified_Data_Monday(models.Model):
+    name = models.TextField()
+    subtasks = models.TextField()
+    contributor = models.TextField()
+    status = models.TextField()
+    timing = models.TextField()
+    ref = models.TextField()
+    workStatus = models.BooleanField()
+
+    class Meta:
+        managed = True
+        db_table = 'modified_monday_data'
+
