@@ -1,5 +1,4 @@
 {% load static %}
-{% extends 'accounts' %}
 <html lang="ru">
 <head>
     <meta charset="utf-8">
@@ -138,7 +137,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="{% action %}">Выйти</a></li>
+                                <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">Выйти</a></li>
                             </ul>
                         </div>
                     </li>
