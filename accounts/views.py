@@ -1,13 +1,12 @@
-from django.shortcuts import redirect, render
-from django.contrib.auth.models import User, Group, Permission
-from cabinet.models import monday_data
+from django.contrib import messages, auth
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User, Group
 
-from .forms import CreateUserForm
-from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
-from django.contrib import auth
+from django.shortcuts import redirect, render
+
 from django.urls import reverse
-from acceses.script import passwords
+
+usersDirectors = Group.objects.get(name='superUsers').user_set.all()
 
 
 def register(request):
@@ -43,7 +42,6 @@ def register(request):
 
 
 def login_view(request):
-    usersDirectors = Group.objects.get(name='superUsers').user_set.all()
     if request.method == "POST":
         _user = request.POST['myEmail']
         _password = request.POST['myPassword']
