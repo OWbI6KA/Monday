@@ -6,7 +6,7 @@
 
 {% block Content %}
     <h3>Личный кабинет Руководителя</h3>
-    {% if workTask.count > 0 %}
+    {% if myData.count > 0 %}
         <table>
             <tr>
                 <th>Название</th>
@@ -16,7 +16,7 @@
                 <th>Время</th>
                 <th>Ref</th>
             </tr>
-            {% for task in workTask %}
+            {% for task in myData %}
                 <tr>
                     <td> {{ task.name }}</td>
                     <td>{{ task.subtasks }}</td>
