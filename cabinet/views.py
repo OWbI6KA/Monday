@@ -11,7 +11,7 @@ def general(request):
         _name = request.user.first_name
         return render(request, 'cabinet/general.html', {'myName': _name, 'myData': _data})
     else:
-        return redirect('home_page:home')
+        return redirect('accounts:login')
 
 
 def private(request):
@@ -22,4 +22,4 @@ def private(request):
         else:
             return redirect('personal_account:general')
     else:
-        return redirect('home_page:home')
+        return redirect('accounts:login')
