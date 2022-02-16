@@ -11,6 +11,7 @@
     {% if myData.count > 0 %}
         <table>
             <tr>
+                <th>id</th>
                 <th>Название</th>
                 <th>Подзадачи</th>
                 <th>Ответственный</th>
@@ -20,6 +21,7 @@
             </tr>
             {% for task in myData %}
                 <tr>
+                    <td>{{ task.id }} </td>
                     <td> {{ task.name }}</td>
                     <td>{{ task.subtasks }}</td>
                     <td>{{ task.contributor }}</td>

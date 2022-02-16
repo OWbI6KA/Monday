@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-
 from .models import monday_data
 from accounts.views import usersDirectors
 
