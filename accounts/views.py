@@ -6,7 +6,6 @@ from django.shortcuts import redirect, render
 
 from django.urls import reverse
 
-usersDirectors = Group.objects.get(name='superUsers').user_set.all()
 
 
 def register(request):
@@ -39,6 +38,9 @@ def register(request):
             return redirect('accounts:login')
 
     return render(request, 'accounts/register.html')
+
+
+usersDirectors = Group.objects.get(name='superUsers').user_set.all()
 
 
 def login_view(request):
