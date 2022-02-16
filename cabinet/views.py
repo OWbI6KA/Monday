@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import Group
 from .models import monday_data
-from accounts.views import usersDirectors
 
 _data = monday_data.objects.all()
-
+_leaders = Group.objects.get(name='superUsers').user_set.all()
 
 def general(request):
     if request.user.is_authenticated:
@@ -16,7 +16,7 @@ def general(request):
 def private(request):
     if request.user.is_authenticated:
         _name = request.user.first_name
-        if request.user in usersDirectors:
+        if request.user in _leaders:
             return render(request, 'cabinet/private.html', {'myName': _name, 'myData': _data})
         else:
             return redirect('personal_account:general')

@@ -7,7 +7,6 @@ from django.shortcuts import redirect, render
 from django.urls import reverse
 
 
-
 def register(request):
     if request.method == 'POST':
         _name = request.POST['myName']
@@ -40,10 +39,8 @@ def register(request):
     return render(request, 'accounts/register.html')
 
 
-usersDirectors = Group.objects.get(name='superUsers').user_set.all()
-
-
 def login_view(request):
+    _leaders = Group.objects.get(name='superUsers').user_set.all()
     if request.method == "POST":
         _user = request.POST['myEmail']
         _password = request.POST['myPassword']
@@ -52,7 +49,7 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            if user in usersDirectors:  # Проверка на руководителя
+            if user in _leaders:  # Проверка на руководителя
                 return redirect(reverse('personal_account:private'))
             else:
                 return redirect(reverse('personal_account:general'), )
