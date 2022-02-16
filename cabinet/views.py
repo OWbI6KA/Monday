@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import Group
 from .models import monday_data
+from django.contrib.auth.models import Group
 
 _data = monday_data.objects.all()
 _leaders = Group.objects.get(name='superUsers').user_set.all()
