@@ -1,21 +1,17 @@
-{% extends 'base/base.html' %}
+{% extends 'accounts/base.html' %}
+
 {% load static %}
 
+{% block Title %}
+    Вход
+{% endblock %}
 
 
-{% block registration %}
-    <!doctype html>
-    <html lang="ru">
+{% block Content %}
     <head>
         <meta charset="utf-8">
-
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-        <meta name="generator" content="Hugo 0.88.1">
         <link rel="canonical" href="{% static 'css/accounts/login' %}">
 
-        <!-- Bootstrap core CSS -->
         <link href="{% static 'css/bootstrap/bootstrap.css' %}" rel="stylesheet">
         <link href="{% static 'css/base/Main_page.css' %}" rel="stylesheet">
 
@@ -36,35 +32,16 @@
                 }
             }
         </style>
-
-        <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark" dir="rtl">
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav">
-                        <li class="nav-item ">
-                            <a class="nav-link " aria-current="page" href="{% url 'home_page:home' %}"> Назад </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'home_page:about' %}">О нас</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'home_page:help' %}">Помощь</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
         <link href="{% static 'css/accounts/login.css' %}" rel="stylesheet">
-        <title>Вход</title>
     </head>
+
     <body class="text-center">
     <header>
         {% if messages %}
             {% for message in messages %}
                 {% if message.tags == 'error' %}
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <strong>Ошибка! -</strong> {{ message }}
+                        <strong>Ошибка! - </strong> {{ message }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                 {% endif %}
@@ -90,8 +67,4 @@
 
     </body>
     </html>
-{% endblock %}
-
-{% block Title %}
-    Вход
 {% endblock %}

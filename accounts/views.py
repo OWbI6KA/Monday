@@ -23,13 +23,17 @@ def register(request):
             myUser = User.objects.create_user(_email, _email, password1)
             myUser.first_name = _name
             myUser.last_name = _surname
+            _access = request.POST['myAccess']
+            if _access == '12345':
+                myUser.groups.add(Group.objects.get(name='superUser'))
 
-            # Функция для проверки на руководителя
-            if len(request.POST['myAccess']) != 0:
-                _access = request.POST['myAccess']
-                if _access == '12345':  # Пароль для входа в качестве руководителя
-                    _group = Group.objects.get(name='superUsers')
-                    myUser.groups.add(_group)
+            _group = request.POST['group']
+            if _group == '1':
+                myUser.groups.add(Group.objects.get(name='Group_1'))
+            elif _group == '2':
+                myUser.groups.add(Group.objects.get(name='Group_2'))
+            elif _group == '3':
+                myUser.groups.add(Group.objects.get(name='Group_3'))
 
             myUser.save()
 
