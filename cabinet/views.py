@@ -9,8 +9,8 @@ def general(request):
     if request.user.is_authenticated:
         _name = request.user.first_name
         _group1 = Group.objects.get(name='Group_1').user_set.all()
-        _group2 = Group.objects.get(name='Group_1').user_set.all()
-        _group3 = Group.objects.get(name='Group_1').user_set.all()
+        _group2 = Group.objects.get(name='Group_2').user_set.all()
+        _group3 = Group.objects.get(name='Group_3').user_set.all()
         if request.user in _group1:
             _group = 'Group_1'
         elif request.user in _group2:
