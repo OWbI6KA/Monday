@@ -121,7 +121,7 @@ class ModifiedMondayData(models.Model):
     workstatus = models.BooleanField(db_column='workStatus')  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'modified_monday_data'
 
 
@@ -135,5 +135,5 @@ class MondayData(models.Model):
     timing = models.TextField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'monday_data'
