@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block Content %}
-    <h3>Личный кабинет рабочего</h3>
+    <h3>Личный кабинет рабочего {{ myGroup }}</h3>
     {% if myData.count > 0 %}
         <table>
             <tr>
@@ -15,19 +15,19 @@
                 <th>Название</th>
                 <th>Подзадачи</th>
                 <th>Ответственный</th>
+                <th>Люди</th>
                 <th>Статус</th>
                 <th>Время</th>
-                <th>Ref</th>
             </tr>
             {% for task in myData %}
                 <tr>
-                    <td>{{ task.id }} </td>
-                    <td> {{ task.name }}</td>
+                    <td>{{ task.task_id }} </td>
+                    <td>{{ task.name }}</td>
                     <td>{{ task.subtasks }}</td>
                     <td>{{ task.contributor }}</td>
+                    <td>{{ task.people }}</td>
                     <td>{{ task.status }}</td>
-                    <td> {{ task.time }}</td>
-                    <td>{{ task.ref }}</td>
+                    <td>{{ task.timing }}</td>
                 </tr>
             {% endfor %}
         </table>

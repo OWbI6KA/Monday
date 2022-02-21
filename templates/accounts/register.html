@@ -1,13 +1,11 @@
-{% extends 'base/base.html' %}
+{% extends 'accounts/base.html' %}
 {% load static %}
 
 {% block Title %}
     Регистрация
 {% endblock %}
 
-{% block registration %}
-    <!doctype html>
-    <html lang="ru">
+{% block Content %}
     <head>
         <meta charset="utf-8">
 
@@ -71,31 +69,31 @@
 
             <div class="form-floating">
                 <input type="name" class="form-control"
-                       id="myName" placeholder="myName" name="myName">
+                       id="myName" placeholder="myName" name="myName" required>
                 <label for="myName">Имя</label>
             </div>
 
             <div class="form-floating">
                 <input type="surname" class="form-control"
-                       id="mySurname" placeholder="mySurname" name="mySurname">
+                       id="mySurname" placeholder="mySurname" name="mySurname" required>
                 <label for="mySurname">Фамилия</label>
             </div>
 
             <div class="form-floating">
                 <input type="email" class="form-control"
-                       id="myEmail" placeholder="myEmail" name="myEmail">
+                       id="myEmail" placeholder="myEmail" name="myEmail" required>
                 <label for="myEmail">Почта</label>
             </div>
 
             <div class="form-floating">
                 <input type="password" class="form-control"
-                       id="password" placeholder="password1" name="password1">
+                       id="password" placeholder="password1" name="password1" required>
                 <label for="password1">Введите пароль</label>
             </div>
 
             <div class="form-floating">
                 <input type="password" class="form-control"
-                       id="password" placeholder="password2" name="password2">
+                       id="password" placeholder="password2" name="password2" required>
                 <label for="password2">Повторно введите пароль</label>
             </div>
 
@@ -104,14 +102,22 @@
                        id="myAccess" placeholder="myAccess" name="myAccess">
                 <label for="myAccess">Введите код для входа</label>
             </div>
-
-            <div class="checkbox mb-3">
-                <label>
-                    <input type="checkbox" value="remember-me"> Запомнить меня
-                </label>
+            <div style="margin-bottom:15px;
+                        border-radius: 0px">
+                <select class="form-select " id="group" name="group">
+                    <option value="">Выберите свою бригаду</option>
+                    <option value="1">Бригада 1</option>
+                    <option value="2">Бригада 2</option>
+                    <option value="3">Бригада 3</option>
+                </select>
             </div>
+            {#            <div class="checkbox mb-3">#}
+            {#                <label>#}
+            {#                    <input type="checkbox" value="remember-me"> Запомнить меня#}
+            {#                </label>#}
+            {#            </div>#}
 
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Войти</button>
+            <button class="w-100 btn btn-lg btn-dark" type="submit">Зарегестрироваться</button>
         </form>
     </main>
     </body>

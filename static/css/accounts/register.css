@@ -26,6 +26,10 @@ body {
     z-index: 2;
 }
 
+.form-signin .form-select:focus-within {
+    z-index: 2;
+}
+
 .form-signin input[type="email"] {
     margin-bottom: 8px;
     border-radius: 22px;
@@ -57,6 +61,11 @@ body {
 }
 
 .form-signin input[type="access_code"] {
+    margin-bottom: 8px;
+    border-radius: 22px;
+}
+
+.form-select {
     margin-bottom: 8px;
     border-radius: 22px;
 }
