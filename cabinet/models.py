@@ -111,20 +111,6 @@ class DjangoSession(models.Model):
         db_table = 'django_session'
 
 
-class ModifiedMondayData(models.Model):
-    name = models.TextField()
-    subtasks = models.TextField()
-    contributor = models.TextField()
-    status = models.TextField()
-    timing = models.TextField()
-    ref = models.TextField()
-    workstatus = models.BooleanField(db_column='workStatus')  # Field name made lowercase.
-
-    class Meta:
-        managed = True
-        db_table = 'modified_monday_data'
-
-
 class MondayData(models.Model):
     task_id = models.AutoField(primary_key=True, blank=True, null=False)
     name = models.TextField()
@@ -137,3 +123,21 @@ class MondayData(models.Model):
     class Meta:
         managed = True
         db_table = 'monday_data'
+
+
+class MainData(models.Model):
+    task_id = models.AutoField(primary_key=True, blank=True, null=False)
+    name = models.TextField()
+    subtasks = models.TextField()
+    contributor = models.TextField()
+    people = models.TextField()
+    status = models.BooleanField()
+    timing = models.DateTimeField()
+    textWorker = models.TextField()
+    photoWorker = models.ImageField()
+    doneByWorker = models.BooleanField()
+    doneByLeader = models.BooleanField()
+
+    class Meta:
+        managed = True
+        db_table = 'main_data'
