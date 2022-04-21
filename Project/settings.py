@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'accounts',
     'base',
     'cabinet',
-    'data',
 ]
 
 MIDDLEWARE = [
@@ -77,8 +76,11 @@ WSGI_APPLICATION = 'Project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'monday',
+        'USER': 'root',
+        'PASSWORD': 'nuqboc-zubQi6-vywpyk',
+        'HOST': '34.65.206.211'
     }
 }
 
