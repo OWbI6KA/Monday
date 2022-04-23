@@ -110,34 +110,15 @@ class DjangoSession(models.Model):
         managed = False
         db_table = 'django_session'
 
-
 class MondayData(models.Model):
-    task_id = models.AutoField(primary_key=True, blank=True, null=False)
+    task_id = models.BigIntegerField(primary_key=True)
     name = models.TextField()
     subtasks = models.TextField()
     contributor = models.TextField()
-    people = models.TextField()
-    status = models.TextField()
+    people = models.TextField(blank=True, null=True)
+    status = models.TextField(blank=True, null=True)
     timing = models.TextField()
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'monday_data'
-
-
-class MainData(models.Model):
-    task_id = models.AutoField(primary_key=True, blank=True, null=False)
-    name = models.TextField()
-    subtasks = models.TextField()
-    contributor = models.TextField()
-    people = models.TextField()
-    status = models.BooleanField()
-    timing = models.DateTimeField()
-    textWorker = models.TextField()
-    photoWorker = models.ImageField()
-    doneByWorker = models.BooleanField()
-    doneByLeader = models.BooleanField()
-
-    class Meta:
-        managed = True
-        db_table = 'main_data'
