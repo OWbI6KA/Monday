@@ -25,7 +25,7 @@ def register(request):
             myUser.last_name = _surname
             _access = request.POST['myAccess']
             if _access == '12345':
-                myUser.groups.add(Group.objects.get(name='superUser'))
+                myUser.groups.add(Group.objects.get(name='superUsers'))
 
             _group = request.POST['group']
             if _group == '1':
