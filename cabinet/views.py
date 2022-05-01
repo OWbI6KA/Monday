@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import Group
-from .models import MondayData
+from .models import MainData
 
-_data = MondayData.objects.all()
+_data = MainData.objects.all()
 
-#Подумать над производительностью
+
+# Подумать над производительностью
 def general(request):
     if request.user.is_authenticated:
         _name = request.user.first_name

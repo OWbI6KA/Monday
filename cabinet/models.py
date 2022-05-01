@@ -110,6 +110,7 @@ class DjangoSession(models.Model):
         managed = False
         db_table = 'django_session'
 
+
 class MondayData(models.Model):
     task_id = models.BigIntegerField(primary_key=True)
     name = models.TextField()
@@ -120,5 +121,22 @@ class MondayData(models.Model):
     timing = models.TextField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'monday_data'
+
+
+class MainData(models.Model):
+    task_id = models.BigIntegerField(primary_key=True)
+    name = models.TextField()
+    subtasks = models.TextField()
+    contributor = models.TextField()
+    people = models.TextField()
+    status = models.TextField(blank=True, null=True)
+    timing = models.DateField(blank=True, null=True)
+    textworker = models.TextField(db_column='textWorker', blank=True, null=True)  # Field name made lowercase.
+    donebyworker = models.IntegerField(db_column='doneByWorker', blank=True, null=True)  # Field name made lowercase.
+    donebyleader = models.IntegerField(db_column='doneByLeader', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = True
+        db_table = 'main_data'

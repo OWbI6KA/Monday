@@ -18,6 +18,8 @@
                 <th>Люди</th>
                 <th>Статус</th>
                 <th>Время</th>
+                <th>Выполнено</th>
+
             </tr>
             {% for task in myData %}
                 <tr>
@@ -28,6 +30,7 @@
                     <td>{{ task.people }}</td>
                     <td>{{ task.status }}</td>
                     <td>{{ task.timing }}</td>
+                    <td>{{ task.donebyworker }}</td>
                 </tr>
             {% endfor %}
         </table>
