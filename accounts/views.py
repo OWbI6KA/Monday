@@ -54,9 +54,9 @@ def login_view(request):
         if user is not None:
             login(request, user)
             if user in _leaders:  # Проверка на руководителя
-                return redirect(reverse('personal_account:private'))
+                return redirect(reverse('user:private'))
             else:
-                return redirect(reverse('personal_account:general'), )
+                return redirect(reverse('user:general'), )
 
         else:
             messages.error(request, 'Проверьте правильность введенных данных!')
