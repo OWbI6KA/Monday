@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group, User
+from django.contrib.auth.hashers import check_password
 from .models import MainData
 
 _data = MainData.objects.all()
@@ -24,7 +25,8 @@ def general(request):
         full_name = request.user.get_full_name()
         email = request.user.email
         return render(request, 'cabinet/general.html',
-                      {'myName': _name, 'myData': _data, 'myGroup': _group, 'userName': full_name, 'email': email, 'userGroup' :userGroup})
+                      {'myName': _name, 'myData': _data, 'myGroup': _group, 'userName': full_name, 'email': email,
+                       'userGroup': userGroup})
     else:
         return redirect('accounts:login')
 
@@ -36,8 +38,23 @@ def private(request):
         if request.user in _leaders:
             full_name = request.user.get_full_name()
             email = request.user.email
-            return render(request, 'cabinet/private.html', {'myName': _name, 'myData': _data, 'userName': full_name, 'email': email})
+            return render(request, 'cabinet/private.html',
+                          {'myName': _name, 'myData': _data, 'userName': full_name, 'email': email})
         else:
             return redirect('personal_account:general')
     else:
         return redirect('accounts:login')
+
+
+def change_password(request):
+    if request.method == 'POST':
+        _oldPassword = request.POST['oldPassword']
+        _newPassword = request.POST['newPassword1']
+        _newPassword2 = request.POST['newPassword2']
+    if check_password(_oldPassword, request.user.password):
+        myUser = User.objects.get(username=request.user.username)
+        if _newPassword == _newPassword2:
+            myUser.set_password(_newPassword)
+            myUser.save()
+            redirect('user:general')
+    return redirect('accounts:login')
