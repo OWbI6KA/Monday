@@ -51,10 +51,10 @@ def change_password(request):
         _oldPassword = request.POST['oldPassword']
         _newPassword = request.POST['newPassword1']
         _newPassword2 = request.POST['newPassword2']
-    if check_password(_oldPassword, request.user.password):
-        myUser = User.objects.get(username=request.user.username)
-        if _newPassword == _newPassword2:
-            myUser.set_password(_newPassword)
-            myUser.save()
-            redirect('user:general')
-    return redirect('accounts:login')
+        if check_password(_oldPassword, request.user.password):
+            myUser = User.objects.get(username=request.user.username)
+            if _newPassword == _newPassword2:
+                myUser.set_password(_newPassword)
+                myUser.save()
+                return redirect('user:general')
+    return render(request, 'cabinet/change_password.html')
