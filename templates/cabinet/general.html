@@ -7,34 +7,129 @@
 {% endblock %}
 
 {% block Content %}
-    <h3>Личный кабинет рабочего {{ myGroup }}</h3>
-    {% if myData.count > 0 %}
-        <table>
+    <div class="table-responsive">
+        <table class="table table-striped custom-table">
+            <thead>
             <tr>
-                <th>id</th>
-                <th>Название</th>
-                <th>Подзадачи</th>
-                <th>Ответственный</th>
-                <th>Люди</th>
-                <th>Статус</th>
-                <th>Время</th>
-                <th>Выполнено</th>
-
+                <th scope="col">Название</th>
+                <th scope="col">Ответственные</th>
+                <th scope="col">Люди</th>
+                <th scope="col">Время</th>
+                <th scope="col"></th>
+                <th scope="col">Выполнено</th>
             </tr>
+            </thead>
+            <tbody>
             {% for task in myData %}
-                <tr>
-                    <td>{{ task.task_id }} </td>
-                    <td>{{ task.name }}</td>
-                    <td>{{ task.subtasks }}</td>
-                    <td>{{ task.contributor }}</td>
+                <tr scope="row">
+                    <td>
+                        {{ task.name }}
+                        <small class="d-block">{{ task.subtasks }}</small>
+                    </td>
+                    <td>
+                        {{ task.contributor }}
+                    </td>
                     <td>{{ task.people }}</td>
-                    <td>{{ task.status }}</td>
                     <td>{{ task.timing }}</td>
-                    <td>{{ task.donebyworker }}</td>
+                    <td>
+                        <a href={{ task.task_id }} class="more" data-bs-toggle="modal"
+                           data-bs-target="#modalDetails">Details</a></td>
+                    <td>
+                        <label class="control control--checkbox">
+                            <input type="checkbox"/>
+                            <div class="control__indicator"></div>
+                        </label>
+                    </td>
                 </tr>
             {% endfor %}
+            </tbody>
         </table>
-    {% endif %}
+    </div>
+
+    <div class="modal fade" id="modalDetails" tabindex="-1" aria-labelledby="О задаче" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Информация</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <section style="background-color: #eee;">
+                        <div class="container py-5">
+                            {% for task in myData %}
+                                {% if task.task_id == 1921970400 %}
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Задача</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">{{ task.name }}</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Подзадачи</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">{{ task.subtasks }}</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <th scope="col">Название</th>
+                                    <div class="row">
+
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Ответственные</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">{{ task.contributor }}</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Люди</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">{{ task.people }}</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Дедлайн</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">{{ task.timing }}</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p class="mb-0">Статус задачи</p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            {% if task.donebyworker == 0 %}
+                                                <p class="text-muted mb-0">Не сделано</p>
+                                            {% else %}
+                                                <p class="text-muted mb-0">Выполнено</p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <hr>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </section>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block Profile %}
@@ -104,7 +199,7 @@
                             <header class="d-flex justify-content-center pt-1">
                                 <ul class="nav nav-pills">
                                     <li class="nav-item">
-                                        <a class="btn btn-outline-dark me-4"  href="{% url 'user:change_password' %}">Сменить
+                                        <a class="btn btn-outline-dark me-4" href="{% url 'user:change_password' %}">Сменить
                                             пароль</a>
                                     </li>
                                     <li class="nav-item">
@@ -129,7 +224,7 @@
                 <div class="col-lg-12 ">
                     <div class="card mb-0">
                         <div class="card-body">
-                            <form method="POST"  class="change-password">
+                            <form method="POST" class="change-password">
                                 {% csrf_token %}
                                 <div class="mb-3">
                                     <label for="oldPassword" class="form-label">Введите старый
